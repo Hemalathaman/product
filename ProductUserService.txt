@@ -1,0 +1,21 @@
+package com.novelvista.gtest.service;
+import java.util.List;
+
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
+
+import com.novelvista.gtest.entity.*;
+@Service
+public interface ProductUserService {
+	
+	
+	public ProductUser getProductByName(String productName) throws Exception;
+	public ProductUser getProductByDealerName(String dealerName) throws Exception;
+	public ProductUser getProductByProductCode(int productCode) throws Exception;
+	
+	public List<ProductUser> getAllProducts() throws Exception;
+	public String insertProduct(ProductUser product)throws Exception;
+	public List<ProductUser> getProductsByCategoryAndPriceRangeAndDealerName( String category,float price1,float price2,String dealerName)throws Exception;
+	public List<ProductUser> getAllProductsByCategoryAndPriceAndRating( String category,float price, float userRating)throws Exception;
+
+}

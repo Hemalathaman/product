@@ -1,0 +1,71 @@
+package com.novelvista.gtest.service;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.novelvista.gtest.entity.ProductUser;
+import com.novelvista.gtest.repository.IProductUserCustomRepository;
+import com.novelvista.gtest.repository.ProductUserRepository;
+@Service
+public class ProductUserServiceImpl implements ProductUserService {
+    @Autowired
+    ProductUserRepository productUserRepository;
+	
+
+	@Override
+	public ProductUser getProductByName(String productName) throws Exception {
+		// TODO Auto-generated method stub
+		return productUserRepository.getProductByProductName(productName);
+	}
+
+	@Override
+	public String insertProduct(ProductUser product) throws Exception {
+		// TODO Auto-generated method stub
+		ProductUser savedProduct=productUserRepository.save(product);
+		if(savedProduct!=null)
+		{
+			return "product saved "+savedProduct.getProductName()+"product code:"+savedProduct.getProductCode();
+		}
+		else return null;
+		
+		
+	}
+
+	@Override
+	public List<ProductUser> getAllProducts() throws Exception {
+		// TODO Auto-generated method stub
+		List<ProductUser> allusers=productUserRepository.findAll();
+		return allusers;
+	}
+
+	@Override
+	public ProductUser getProductByDealerName(String dealerName) throws Exception {
+		// TODO Auto-generated method stub
+		return productUserRepository.getProductByDealerName(dealerName);
+	}
+
+	@Override
+	public ProductUser getProductByProductCode(int productCode) throws Exception {
+		// TODO Auto-generated method stub
+		return  productUserRepository.getProductByProductCode(productCode);
+	}
+
+	@Override
+	public List<ProductUser> getProductsByCategoryAndPriceRangeAndDealerName(String category, float price1,
+			float price2, String dealerName) throws Exception {
+		// TODO Auto-generated method stub
+		return productUserRepository.getProductsByCategoryAndPriceRangeAndDealerName(category, price1, price2, dealerName);
+	}
+
+	@Override
+	public List<ProductUser> getAllProductsByCategoryAndPriceAndRating(String category, float price, float rating)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return productUserRepository.getAllProductsByCategoryAndPriceAndRating(category, price, rating);
+	}
+
+   
+} 

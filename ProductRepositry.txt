@@ -1,0 +1,12 @@
+package com.novelvista.gtest.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.novelvista.gtest.entity.ProductUser;
+@Repository
+public interface ProductUserRepository extends JpaRepository<ProductUser, Integer> ,IProductUserCustomRepository{
+
+	//ProductUser getProductByProductCode(int productCode);
+
+}
